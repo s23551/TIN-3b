@@ -1,0 +1,15 @@
+{
+  "name": "tin-zad3b",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000T\u0000I\u0000N\u0000-\u00003\u0000b\u0000\r\u0000 \u0000#\u0000 \u0000T\u0000I\u0000N\u0000-\u00003\u0000b\u0000\r\u0000 \u0000",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
