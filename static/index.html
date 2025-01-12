@@ -16,7 +16,7 @@
         <div id="success"></div>
 
         <div id="body-form">
-            <form id="form" onsubmit="return validateSubmit(event)" action="/form/submit">
+            <form id="form" action="http://localhost:3000/submit" method="post">
                 <label for="fname">First name:</label>
                 <div id="err_fname" class="error"></div><br>
                 <input type="text" id="fname" name="fname">
