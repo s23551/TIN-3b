@@ -19,6 +19,11 @@ app.get("/form", (req, res) => {
     res.render("index.html");
 });
 
+app.use((req, res, next) => {
+    req.body.timestamp = Date.now();
+    next();
+});
+
 app.post('/submit', (req, res) => {
 
     const errors = [];
@@ -38,12 +43,19 @@ app.post('/submit', (req, res) => {
     if (!agree) {
         errors.push("Accepting terms is required.");
     }
+
+    // operacja na danych
+    let _fname = toTitleCase(fname);
+    let _lname = lname.toUpperCase();
+
+
     const formData = {
-        fname: fname,
-        lname: lname,
+        fname: _fname,
+        lname: _lname,
         color: color,
         agree: agree,
-        errors: errors
+        errors: errors,
+        timestamp: req.body.timestamp
     }
     if (errors.length == 0) {
         res.render("result.ejs", { formData: formData });
@@ -52,7 +64,17 @@ app.post('/submit', (req, res) => {
     }
 });
 
+
+
 // Start the server
 app.listen(3000, () => {
     console.log('Server is running on http://localhost:3000');
 });
+
+function toTitleCase(str) {
+    let string = str;
+    return string.replace(
+        /\w\S*/g,
+        text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+}
